@@ -52,6 +52,13 @@ exports.getOneSauce = (req, res, next) => {
 exports.modifySauce = (req, res, next) => {
   let sauce = new Sauce({ _id: req.params._id });
   if (req.file) {
+    Sauce.findOne({ _id: req.params.id }).then(
+      (sauce_replace) => {
+        const filename = sauce_replace.imageUrl.split('/images/')[1];
+        fs.unlink('images/' + filename, () => {
+          console.log(`${filename} deleted`);
+        });
+      });
     const url = req.protocol + '://' + req.get('host');
     req.body.sauce = JSON.parse(req.body.sauce);
     sauce = {
