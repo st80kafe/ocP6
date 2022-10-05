@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
         if (Object.values(MIME_TYPES).includes(name.split('.').pop()) === true) {
             name = name.slice(0, name.lastIndexOf('.'));
         }
-        ;callback(null, name + '.' + Date.now() + '.' + extension);
+        callback(null, name + '.' + Date.now() + '.' + extension);
     }
 });
 

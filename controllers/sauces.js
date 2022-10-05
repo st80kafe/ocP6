@@ -127,7 +127,7 @@ exports.likeSauce = (req, res, next) => {
 
         function spliceArray(usr, usrArr) {
             if (usrArr.includes(usr) === true) {
-                usrArr.splice(usrArr.indexOf(usr), 1)
+                usrArr.splice(usrArr.indexOf(usr), 1);
             }
         }
 
@@ -148,7 +148,7 @@ exports.likeSauce = (req, res, next) => {
             }
         } else {
             if (sauce.usersLiked.includes(userStr) === true) {
-                spliceArray(userString, sauce.usersLiked)
+                spliceArray(userString, sauce.usersLiked);
             }
             if (sauce.usersDisliked.includes(userStr) === false) {
                 sauce.usersDisliked.push(userStr);
