@@ -1,5 +1,5 @@
-# ocP5
-Project 5 of the Web Developer path is a back-end server built with the Express.js framework.
+# ocP6
+Project 6 of the Web Developer path is a back-end server built with the Express.js framework.
 The app provides a secure API for a client ecommerce site. 
 
 ### Server Installation ###
