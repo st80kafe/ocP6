@@ -1,7 +1,7 @@
 const Sauce = require('../models/sauce');
 const fs = require('fs');
 
-exports.createSauce = (req, res, next) => {
+exports.createSauce = (req, res) => {
     req.body.sauce = JSON.parse(req.body.sauce);
     const url = req.protocol + '://' + req.get('host');
     const sauce = new Sauce({
@@ -29,7 +29,7 @@ exports.createSauce = (req, res, next) => {
     });
 };
 
-exports.getOneSauce = (req, res, next) => {
+exports.getOneSauce = (req, res) => {
     Sauce.findOne({
         _id: req.params.id
     }).then((sauce) => {
@@ -41,7 +41,7 @@ exports.getOneSauce = (req, res, next) => {
     });
 };
 
-exports.modifySauce = (req, res, next) => {
+exports.modifySauce = (req, res) => {
     let sauce = new Sauce({_id: req.params._id});
     if (req.file) {
         Sauce.findOne({_id: req.params.id}).then((sauce_replace) => {
@@ -93,7 +93,7 @@ exports.modifySauce = (req, res, next) => {
     });
 };
 
-exports.deleteSauce = (req, res, next) => {
+exports.deleteSauce = (req, res) => {
     Sauce.findOne({_id: req.params.id}).then((sauce) => {
         const filename = sauce.imageUrl.split('/images/')[1];
         fs.unlink('images/' + filename, () => {
@@ -110,7 +110,7 @@ exports.deleteSauce = (req, res, next) => {
     });
 };
 
-exports.getAllSauces = (req, res, next) => {
+exports.getAllSauces = (req, res) => {
     Sauce.find().then((sauces) => {
         res.status(200).json(sauces);
     }).catch((error) => {
@@ -120,7 +120,7 @@ exports.getAllSauces = (req, res, next) => {
     });
 };
 
-exports.likeSauce = (req, res, next) => {
+exports.likeSauce = (req, res) => {
     Sauce.findOne({_id: req.params.id}).then((sauce) => {
         const userStr = req.body.userId;
         const userLike = req.body.like;
