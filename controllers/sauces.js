@@ -95,6 +95,16 @@ exports.modifySauce = (req, res) => {
 
 exports.deleteSauce = (req, res) => {
     Sauce.findOne({_id: req.params.id}).then((sauce) => {
+        if (!sauce) {
+            return res.status(404).json({
+                error: new Error('Could not find sauce')
+            });
+        }
+        if (sauce.userId !== req.auth.userId) {
+            return res.status(401).json({
+                error: new Error('Request not authorized')
+            });
+        }
         const filename = sauce.imageUrl.split('/images/')[1];
         fs.unlink('images/' + filename, () => {
             Sauce.deleteOne({_id: req.params.id}).then(() => {
