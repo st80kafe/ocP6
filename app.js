@@ -6,6 +6,11 @@ const mongoose = require('mongoose');
 const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 const path = require('path');
+
+/*
+https://github.com/motdotla/dotenv#Usage
+Authentication to MongoDB Atlas by means of query string in dotenv file, '.env' .
+*/
 const mongo = process.env.DB_CONNECTION;
 
 app.use(express.json());

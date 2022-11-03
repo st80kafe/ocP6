@@ -9,6 +9,8 @@ The server should listen on default port `3000` at the address `localhost`. If t
 server runs on another port for any reason, this is printed to the
 console when the server starts, e.g. `Listening on port 3001`.
 
+### Database connection
+Mongoose and Dotenv packages handle connection to a MongoDB database created for development and testing.
 
 ### Availability of front-end server ###
 Open Classrooms maintains a repository of the [front-end code](https://github.com/OpenClassrooms-Student-Center/Web-Developer-P6) for the project. 
